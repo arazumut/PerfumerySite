@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Anasayfa - Parfüm Kozmetik{% endblock %}
+
+{% block body_class %}page-home{% endblock %}
+
+{% block content %}
+<div class="section-hero section-home">
+    <div class="section-hero__bg"><img src="{% static 'assets/img/home-hero.jpg' %}" alt="home-hero"></div>
+    <div class="section-hero__content" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
+        <h1 class="section-hero__title">Bakımlı ve Modern</h1>
+        <p class="section-hero__subtitle">ParfumCosmetic Kozmetik</p>
+    </div>
+</div>
+<div class="section-slider">
+    <div class="slider-first-screen">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="section-slider-item"><img src="{% static 'assets/img/slider-slide-1.jpg' %}" alt="slider-slide"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="section-slider-item"><img src="{% static 'assets/img/slider-slide-2.jpg' %}" alt="slider-slide"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="section-slider-item"> <img src="{% static 'assets/img/slider-slide-3.jpg' %}" alt="slider-slide"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="section-slider-item"> <img src="{% static 'assets/img/slider-slide-4.jpg' %}" alt="slider-slide"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-about">
+    <div class="uk-section-large uk-container">
+        <div class="uk-grid uk-child-width-1-2@m" data-uk-grid>
+            <div>
+                <div class="section-about__media _anim">
+                    <div class="img-animate _anim _anim-no-repeat"><img src="{% static 'assets/img/img-about.jpg' %}" alt=""></div>
+                </div>
+            </div>
+            <div>
+                <div class="section-about__desc" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 300">
+                    <div class="section-title"><span>parfume cosmetics</span>
+                        <h3>Her Yüzü Mükemmel Yapın</h3>
+                    </div>
+                    <div class="section-content">
+                        <p>Kaliteli kozmetik ürünlerimizle cilt bakımını en üst seviyeye taşıyın. Yüzünüze özel formüllerle geliştirilmiş ürünlerimiz, cildinizi besler ve canlandırır.</p>
+                        <a class="uk-button uk-button-danger uk-button-large" href="{% url 'shop' %}">Koleksiyonu Gör</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-shop-categories">
+    <div class="uk-section uk-container">
+        <div class="section-content">
+            <div class="uk-grid uk-child-width-1-5@m uk-child-width-1-2 uk-flex-center" data-uk-grid data-uk-scrollspy="target: &gt; div; cls: uk-animation-slide-bottom-small; delay: 300">
+                {% for category in categories %}
+                <div>
+                    <div class="shop-categories-unit">
+                        <a class="shop-categories-unit__link" href="{% url 'category_detail' category.slug %}"> 
+                            <span class="shop-categories-unit__icon">
+                                {% if category.image %}
+                                    <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                                {% else %}
+                                    <img src="{% static 'assets/img/shop-categories-1.png' %}" alt="{{ category.name }}">
+                                {% endif %}
+                            </span>
+                            <span class="shop-categories-unit__title">{{ category.name }}</span>
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <!-- Kategoriler olmadığında varsayılan içerik -->
+                <div>
+                    <div class="shop-categories-unit"><a class="shop-categories-unit__link" href="{% url 'shop' %}"> <span class="shop-categories-unit__icon"><img src="{% static 'assets/img/shop-categories-1.png' %}" alt="shop-categories"></span><span class="shop-categories-unit__title">Cilt Bakımı</span></a></div>
+                </div>
+                <div>
+                    <div class="shop-categories-unit"><a class="shop-categories-unit__link" href="{% url 'shop' %}"> <span class="shop-categories-unit__icon"><img src="{% static 'assets/img/shop-categories-2.png' %}" alt="shop-categories"></span><span class="shop-categories-unit__title">Kaş Bakımı</span></a></div>
+                </div>
+                <div>
+                    <div class="shop-categories-unit"><a class="shop-categories-unit__link" href="{% url 'shop' %}"> <span class="shop-categories-unit__icon"><img src="{% static 'assets/img/shop-categories-3.png' %}" alt="shop-categories"></span><span class="shop-categories-unit__title">Yüz</span></a></div>
+                </div>
+                <div>
+                    <div class="shop-categories-unit"><a class="shop-categories-unit__link" href="{% url 'shop' %}"> <span class="shop-categories-unit__icon"><img src="{% static 'assets/img/shop-categories-4.png' %}" alt="shop-categories"></span><span class="shop-categories-unit__title">Saç Bakımı</span></a></div>
+                </div>
+                <div>
+                    <div class="shop-categories-unit"><a class="shop-categories-unit__link" href="{% url 'shop' %}"> <span class="shop-categories-unit__icon"><img src="{% static 'assets/img/shop-categories-5.png' %}" alt="shop-categories"></span><span class="shop-categories-unit__title">Makyaj</span></a></div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="section-shop-categories__desc" data-uk-scrollspy="target: &gt; div; cls: uk-animation-slide-bottom-small; delay: 300">
+                <div class="section-shop-categories__title">En iyi aydınlatıcı Kaş kozmetik ürünlerini keşfedin</div>
+                <div class="section-shop-categories__text">Kaliteli kozmetik ürünlerimizle kaşlarınızı mükemmel şekilde belirginleştirin. Kaş bakımındaki uzmanlığımızla, her yüze uygun çözümler sunuyoruz.</div>
+                <div class="section-shop-categories__btn"><a class="uk-button uk-button-danger uk-button-large" href="{% url 'shop' %}">Alışverişe Başla</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-new-arrivals">
+    <div class="uk-background-muted">
+        <div class="uk-section-large uk-container">
+            <div class="section-title" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 300"><span>En iyi kozmetik ürünleri</span>
+                <h3>Yeni Gelenler</h3>
+            </div>
+            <div class="section-content">
+                <div class="uk-grid uk-child-width-1-3@m uk-child-width-1-2@s" data-uk-grid data-uk-scrollspy="target: &gt; div; cls: uk-animation-slide-bottom-small; delay: 300">
+                    {% for product in new_products %}
+                    <div>
+                        <div class="product-card">
+                            <div class="product-card__box">
+                                <div class="product-card__media"> 
+                                    {% if product.image %}
+                                    <img class="product-card__img" src="{{ product.image.url }}" alt="{{ product.name }}" />
+                                    {% else %}
+                                    <img class="product-card__img" src="{% static 'assets/img/img-product-1.jpg' %}" alt="{{ product.name }}" />
+                                    {% endif %}
+                                    {% if product.is_new %}
+                                    <div class="product-card__badge new">yeni</div>
+                                    {% endif %}
+                                    <div class="product-card__btns">
+                                        <ul>
+                                            <li><a href="#"><span>Sepete Ekle</span><i class="fas fa-shopping-basket"></i></a></li>
+                                            <li><a href="#"><span>Yakınlaştır</span><i class="fas fa-search-plus"></i></a></li>
+                                            <li><a href="#"><span>İstek Listesine Ekle</span><i class="fas fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-card__info">
+                                    <div class="product-card__title"> 
+                                        <a href="{% url 'product_detail' product.slug %}">{{ product.name }}</a>
+                                        <span>{{ product.category.name }}</span>
+                                    </div>
+                                    <div class="product-card__price">
+                                        {% if product.old_price %}
+                                        <del>{{ product.old_price }} TL</del>
+                                        {% endif %}
+                                        {{ product.price }} TL
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <!-- Ürün olmadığında varsayılan ürünler -->
+                    <div>
+                        <div class="product-card">
+                            <div class="product-card__box">
+                                <div class="product-card__media"> <img class="product-card__img" src="{% static 'assets/img/img-product-1.jpg' %}" alt="V-Beauty Pack" />
+                                    <div class="product-card__btns">
+                                        <ul>
+                                            <li><a href="#"><span>Sepete Ekle</span><i class="fas fa-shopping-basket"></i></a></li>
+                                            <li><a href="#"><span>Yakınlaştır</span><i class="fas fa-search-plus"></i></a></li>
+                                            <li><a href="#"><span>İstek Listesine Ekle</span><i class="fas fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-card__info">
+                                    <div class="product-card__title"> <a href="{% url 'product' %}">Güzellik Paketi</a><span>Yüz Losyonu</span></div>
+                                    <div class="product-card__price">125.65 TL</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="product-card">
+                            <div class="product-card__box">
+                                <div class="product-card__media"> <img class="product-card__img" src="{% static 'assets/img/img-product-2.jpg' %}" alt="Anti-Aging Cream" />
+                                    <div class="product-card__badge new">yeni</div>
+                                    <div class="product-card__btns">
+                                        <ul>
+                                            <li><a href="#"><span>Sepete Ekle</span><i class="fas fa-shopping-basket"></i></a></li>
+                                            <li><a href="#"><span>Yakınlaştır</span><i class="fas fa-search-plus"></i></a></li>
+                                            <li><a href="#"><span>İstek Listesine Ekle</span><i class="fas fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-card__info">
+                                    <div class="product-card__title"> <a href="{% url 'product' %}">Yaşlanma Karşıtı Krem</a><span>Makyaj</span></div>
+                                    <div class="product-card__price">349.50 TL</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="product-card">
+                            <div class="product-card__box">
+                                <div class="product-card__media"> <img class="product-card__img" src="{% static 'assets/img/img-product-3.jpg' %}" alt="Hair Style Gel" />
+                                    <div class="product-card__btns">
+                                        <ul>
+                                            <li><a href="#"><span>Sepete Ekle</span><i class="fas fa-shopping-basket"></i></a></li>
+                                            <li><a href="#"><span>Yakınlaştır</span><i class="fas fa-search-plus"></i></a></li>
+                                            <li><a href="#"><span>İstek Listesine Ekle</span><i class="fas fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-card__info">
+                                    <div class="product-card__title"> <a href="{% url 'product' %}">Saç Şekillendirici Jel</a><span>Saç Bakımı</span></div>
+                                    <div class="product-card__price">129.90 TL</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="uk-margin-medium-top uk-text-center"><a class="uk-button uk-button-default uk-button-large" href="{% url 'shop' %}">Daha Fazla Ürün Gör</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

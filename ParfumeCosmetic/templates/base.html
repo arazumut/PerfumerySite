@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Parfüm Kozmetik{% endblock %}</title>
+    <meta content="Templines" name="author">
+    <meta content="Viasun" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/css/libs.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}page-home{% endblock %}">
+    <!-- Loader-->
+    <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span></div>
+    <!-- Loader end-->
+
+    <div class="page-wrapper">
+        <header class="page-header">
+            <div class="page-header__inner">
+                <div class="page-header__logo"><a class="logo" href="{% url 'index' %}"><img src="{% static 'assets/img/logo.png' %}" alt="Viasun"></a></div>
+                <div class="page-header__menu">
+                    <nav class="page-nav" data-uk-navbar="">
+                        <ul class="uk-navbar-nav">
+                            <li><a href="{% url 'home' %}">Anasayfa</a></li>
+                            <li><a href="{% url 'shop' %}">Mağaza</a></li>
+                            <li><a href="{% url 'about' %}">Hakkımızda</a></li>
+                            <li><a href="{% url 'product' %}">Sayfalar</a></li>
+                            <li><a href="{% url 'blog' %}">Blog</a></li>
+                            <li><a href="{% url 'contact' %}">İletişim</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="page-header__btn"><a class="menu-btn" href="#offcanvas" data-uk-toggle><img src="{% static 'assets/img/icon_menu-btn.svg' %}" alt="menu-btn"></a></div>
+            </div>
+        </header>
+        
+        <main class="page-main">
+            {% block content %}
+            {% endblock %}
+        </main>
+        
+        <footer class="page-footer">
+            {% block footer %}
+            <div class="page-footer__inner">
+                <div class="uk-container">
+                    <div class="uk-grid uk-child-width-1-4@m uk-child-width-1-2@s" data-uk-grid>
+                        <div>
+                            <div class="page-footer__section">
+                                <div class="page-footer__logo"><img src="{% static 'assets/img/logo.png' %}" alt="Viasun"></div>
+                                <p class="uk-margin-medium-top">Viasun, en kaliteli kozmetik ve bakım ürünlerini müşterilerimizle buluşturmak için 2005 yılından beri hizmet vermektedir.</p>
+                                <ul class="social">
+                                    <li><a href="http://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="http://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="http://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="http://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="page-footer__section">
+                                <h3 class="page-footer__title">İletişim</h3>
+                                <ul class="uk-nav">
+                                    <li><a href="tel:+905555555555"><i class="fas fa-phone uk-margin-small-right"></i>+90 555 555 55 55</a></li>
+                                    <li><a href="mailto:info@parfumecosmetic.com"><i class="fas fa-envelope uk-margin-small-right"></i>info@parfumecosmetic.com</a></li>
+                                    <li><a href="#"><i class="fas fa-map-marker-alt uk-margin-small-right"></i>İstanbul, Türkiye</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="page-footer__section">
+                                <h3 class="page-footer__title">Bilgi</h3>
+                                <ul class="uk-nav">
+                                    <li><a href="{% url 'about' %}">Hakkımızda</a></li>
+                                    <li><a href="#">Teslimat Bilgileri</a></li>
+                                    <li><a href="#">Gizlilik Politikası</a></li>
+                                    <li><a href="#">Kullanım Koşulları</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="page-footer__section">
+                                <h3 class="page-footer__title">Hesabım</h3>
+                                <ul class="uk-nav">
+                                    <li><a href="{% url 'login' %}">Giriş</a></li>
+                                    <li><a href="#">Sepetim</a></li>
+                                    <li><a href="#">İstek Listem</a></li>
+                                    <li><a href="{% url 'contact' %}">İletişim</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-footer__bottom">
+                <div class="uk-container">
+                    <div class="uk-grid uk-child-width-1-2@m" data-uk-grid>
+                        <div>
+                            <div class="page-footer__copyright">© 2024 Parfüm Kozmetik - Tüm Hakları Saklıdır.</div>
+                        </div>
+                        <div class="uk-text-right">
+                            <div class="page-footer__payments"><img src="{% static 'assets/img/payment-methods.png' %}" alt="Payment Methods"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+        </footer>
+    </div>
+    
+    <!-- Offcanvas Menu -->
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+        <div class="uk-offcanvas-bar">
+            <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+            <div class="uk-margin-large-top uk-text-center uk-margin-large-bottom">
+                <a class="logo" href="{% url 'index' %}"><img src="{% static 'assets/img/logo.png' %}" alt="Viasun"></a>
+            </div>
+            <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
+                <li><a href="{% url 'home' %}">Anasayfa</a></li>
+                <li class="uk-parent"><a href="{% url 'shop' %}">Mağaza</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="{% url 'shop' %}">Kreatif Mağaza Stili</a></li>
+                        <li><a href="{% url 'shop_default' %}">Kenar Çubuğu Stili</a></li>
+                        <li><a href="{% url 'shop_grid' %}">Geniş Stil</a></li>
+                        <li><a href="{% url 'product_default' %}">Varsayılan Ürün Sayfası</a></li>
+                        <li><a href="{% url 'product' %}">Kreatif Ürün Sayfası</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'about' %}">Hakkımızda</a></li>
+                <li class="uk-parent"><a href="#">Sayfalar</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="{% url 'login' %}">Giriş Sayfası</a></li>
+                        <li><a href="{% url 'reset_password' %}">Şifre Sıfırlama</a></li>
+                        <li><a href="{% url 'typography' %}">Tipografi Sayfası</a></li>
+                    </ul>
+                </li>
+                <li class="uk-parent"><a href="{% url 'blog' %}">Blog</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="{% url 'blog' %}">Blog Ana</a></li>
+                        <li><a href="{% url 'blog_post' %}">Blog Yazısı 1</a></li>
+                        <li><a href="{% url 'blog_post_new' %}">Blog Yazısı 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'contact' %}">İletişim</a></li>
+            </ul>
+            <div class="uk-margin-large-top">
+                <div class="uk-text-center">
+                    <div class="footer-contacts uk-text-small">
+                        <p>+90 555 555 55 55<br>
+                        info@parfumecosmetic.com<br>
+                        İstanbul, Türkiye</p>
+                    </div>
+                    <ul class="social">
+                        <li><a href="http://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="http://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="http://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="http://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'assets/js/libs.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

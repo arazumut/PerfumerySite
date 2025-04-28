@@ -1,0 +1,389 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if product %}{{ product.name }} - Parfüm Kozmetik{% else %}Ürün Detayı - Parfüm Kozmetik{% endif %}
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Ürün sayfası için ek stil düzeltmeleri */
+    .product-full-card__gallery-box {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .product-full-card__view img {
+        max-height: 450px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .product-full-card__title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    .product-full-card__price {
+        margin-bottom: 15px;
+    }
+    
+    .product-full-card__price span {
+        font-size: 24px;
+        font-weight: 700;
+        color: #e91e63;
+    }
+    
+    .product-full-card__price del {
+        color: #999;
+        margin-right: 10px;
+    }
+    
+    .product-full-card__category,
+    .product-full-card__stock {
+        margin-bottom: 10px;
+    }
+    
+    .status {
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .status-green {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+    }
+    
+    .status-red {
+        background-color: #ffebee;
+        color: #c62828;
+    }
+    
+    .product-full-card__new span {
+        background: #e91e63;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .product-full-card__info-desc {
+        margin: 25px 0;
+        line-height: 1.6;
+    }
+    
+    .counter {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    
+    .counter-btn {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: #f5f5f5;
+        user-select: none;
+    }
+    
+    .counter-value {
+        width: 40px;
+        text-align: center;
+        border: none;
+        padding: 5px;
+    }
+    
+    .product-full-card__add {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .product-full-card__add-count {
+        margin-right: 15px;
+    }
+    
+    .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .product-card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .first-screen__bg {
+        height: 300px;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+    }
+    
+    .first-screen__bg:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.4);
+    }
+    
+    .first-screen__content {
+        position: relative;
+        z-index: 1;
+        padding: 60px 0;
+    }
+    
+    .first-screen__title {
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .uk-breadcrumb > li > * {
+        color: #fff;
+    }
+    
+    .uk-breadcrumb > li > a:hover {
+        color: #e91e63;
+    }
+</style>
+{% endblock %}
+
+{% block body_class %}page-product{% endblock %}
+
+{% block content %}
+<div class="section-hero">
+    <div class="section-hero__bg"><img src="{% static 'assets/img/shop-hero.jpg' %}" alt="product-hero"></div>
+    <div class="section-hero__content" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
+        {% if product %}
+        <h1 class="section-hero__title">{{ product.name }}</h1>
+        <div class="section-hero__breadcrumb">
+            <ul class="uk-breadcrumb">
+                <li><a href="{% url 'index' %}">Anasayfa</a></li>
+                <li><a href="{% url 'shop' %}">Mağaza</a></li>
+                <li><span>{{ product.name }}</span></li>
+            </ul>
+        </div>
+        {% else %}
+        <h1 class="section-hero__title">Ürün Detayı</h1>
+        <div class="section-hero__breadcrumb">
+            <ul class="uk-breadcrumb">
+                <li><a href="{% url 'index' %}">Anasayfa</a></li>
+                <li><a href="{% url 'shop' %}">Mağaza</a></li>
+                <li><span>Ürün Detayı</span></li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="uk-section">
+        <div class="uk-container">
+            <div class="product-full-card uk-margin-medium-bottom" data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-medium; delay: 200">
+                <div class="uk-grid uk-grid-large" data-uk-grid>
+                    <div class="uk-width-1-2@m">
+                        <div class="product-full-card__gallery">
+                            <div class="product-full-card__gallery-box">
+                                <div class="product-full-card__gallery-box-inner">
+                                    <div class="product-full-card__view">
+                                        {% if product and product.image %}
+                                        <div><img src="{{ product.image.url }}" alt="{{ product.name }}"></div>
+                                        {% else %}
+                                        <div><img src="{% static 'assets/img/product-full-1.jpg' %}" alt="product-full"></div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-2@m">
+                        <div class="product-full-card__content">
+                            <div class="product-full-card__not-active">
+                                <div class="product-full-card__title">
+                                    {% if product %}{{ product.name }}{% else %}Yüz Bakım Kremi{% endif %}
+                                </div>
+                                <div class="product-full-card__desc">
+                                    <div class="product-full-card__price">
+                                        {% if product and product.old_price %}
+                                        <del>{{ product.old_price }} TL</del>
+                                        <span>{{ product.price }} TL</span>
+                                        {% elif product %}
+                                        <span>{{ product.price }} TL</span>
+                                        {% else %}
+                                        <del>150.00 TL</del>
+                                        <span>129.90 TL</span>
+                                        {% endif %}
+                                    </div>
+                                    <div class="product-full-card__category">
+                                        Kategori: 
+                                        {% if product %}
+                                        <a href="#">{{ product.category.name }}</a>
+                                        {% else %}
+                                        <a href="{% url 'shop' %}">Cilt Bakımı</a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="product-full-card__stock">
+                                        Stok Durumu: 
+                                        {% if product and product.is_available %}
+                                        <span class="status status-green">Stokta Var</span>
+                                        {% elif product %}
+                                        <span class="status status-red">Tükendi</span>
+                                        {% else %}
+                                        <span class="status status-green">Stokta Var</span>
+                                        {% endif %}
+                                    </div>
+                                    {% if product and product.is_new or not product %}
+                                    <div class="product-full-card__new"><span>Yeni</span></div>
+                                    {% endif %}
+                                </div>
+                                <div class="product-full-card__info">
+                                    <div class="product-full-card__info-desc">
+                                        {% if product %}
+                                        {{ product.description|linebreaks }}
+                                        {% else %}
+                                        <p>Doğal içerikli yüz bakım kremimiz, cildinizi nemlendirip ışıl ışıl bir görünüm kazandırır. İçeriğindeki E vitamini ve hyaluronik asit sayesinde cildiniz gün boyu nemli kalır ve cilt dokusunu yeniler.</p>
+                                        <p>Günlük kullanım için idealdir ve tüm cilt tiplerine uygundur. Paraben içermez ve dermatolojik olarak test edilmiştir.</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="product-full-card__add">
+                                    <div class="product-full-card__add-count">
+                                        <div class="counter">
+                                            <span class="counter-btn minus">-</span>
+                                            <input class="counter-value" type="text" name="count" value="1">
+                                            <span class="counter-btn plus">+</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-full-card__add-btn">
+                                        <a class="uk-button uk-button-danger uk-button-large" href="#!">
+                                            <span>Sepete Ekle</span>
+                                            <img class="uk-margin-small-left" src="{% static 'assets/img/icons/cart.svg' %}" alt="cart" data-uk-svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% if product %}
+            <div class="uk-margin-large-top">
+                <div class="section-title" data-uk-scrollspy="cls: uk-animation-slide-bottom-small; delay: 200">
+                    <span>BU KATEGORİDEN ÜRÜNLER</span>
+                    <h3>İlgili Ürünler</h3>
+                </div>
+                <div class="section-content">
+                    <div class="uk-grid uk-grid-medium uk-child-width-1-4@l uk-child-width-1-3@m uk-child-width-1-2@s" data-uk-grid data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-medium; delay: 300">
+                        {% for related in related_products %}
+                        <div>
+                            <div class="product-card">
+                                <div class="product-card__box">
+                                    <div class="product-card__media">
+                                        {% if related.image %}
+                                        <img class="product-card__img" src="{{ related.image.url }}" alt="{{ related.name }}" />
+                                        {% else %}
+                                        <img class="product-card__img" src="{% static 'assets/img/img-product-1.jpg' %}" alt="{{ related.name }}" />
+                                        {% endif %}
+                                        {% if related.is_new %}
+                                        <div class="product-card__badge new">yeni</div>
+                                        {% endif %}
+                                        <div class="product-card__btns">
+                                            <ul>
+                                                <li><a href="#"><span>Sepete Ekle</span><i class="fas fa-shopping-basket"></i></a></li>
+                                                <li><a href="#"><span>Yakınlaştır</span><i class="fas fa-search-plus"></i></a></li>
+                                                <li><a href="#"><span>İstek Listesine Ekle</span><i class="fas fa-heart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__info">
+                                        <div class="product-card__title">
+                                            <a href="#">{{ related.name }}</a>
+                                            <span>{{ related.category.name }}</span>
+                                        </div>
+                                        <div class="product-card__price">
+                                            {% if related.old_price %}
+                                            <del>{{ related.old_price }} TL</del>
+                                            {% endif %}
+                                            {{ related.price }} TL
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="uk-width-1-1 uk-text-center">
+                            <p>Bu kategoride başka ürün bulunmamaktadır.</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Yükleme ekranını gizle
+        window.addEventListener('load', function() {
+            var preloader = document.getElementById('page-preloader');
+            if (preloader) {
+                preloader.classList.add('loaded');
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        // Miktar artırma-azaltma işlemleri
+        const minus = document.querySelector('.minus');
+        const plus = document.querySelector('.plus');
+        const countInput = document.querySelector('.counter-value');
+        
+        if (minus && plus && countInput) {
+            minus.addEventListener('click', function() {
+                let count = parseInt(countInput.value);
+                if (count > 1) {
+                    countInput.value = count - 1;
+                }
+            });
+            
+            plus.addEventListener('click', function() {
+                let count = parseInt(countInput.value);
+                countInput.value = count + 1;
+            });
+            
+            countInput.addEventListener('change', function() {
+                let count = parseInt(countInput.value);
+                if (isNaN(count) || count < 1) {
+                    countInput.value = 1;
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

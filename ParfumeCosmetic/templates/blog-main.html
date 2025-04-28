@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog - Kozmetik Viasun{% endblock %}
+
+{% block body_class %}page-blog{% endblock %}
+
+{% block content %}
+<div class="section-hero">
+    <div class="section-hero__bg"><img src="{% static 'assets/img/blog-hero.jpg' %}" alt="blog-hero"></div>
+    <div class="section-hero__content" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
+        <h1 class="section-hero__title section-hero__top_padding">Blog</h1>
+    </div>
+</div>
+<div class="page-content">
+    <div class="uk-section-large uk-container">
+        <div class="uk-grid uk-grid-large" data-uk-grid>
+            <div class="uk-width-2-3@m">
+                <div data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
+                    <article class="article-intro">
+                        <div class="article-intro__image shine"><a href="{% url 'blog_post' %}"><img src="{% static 'assets/img/img-article-intro-1.jpg' %}" alt="img-article"></a></div>
+                        <div class="article-intro__head">
+                            <div class="article-intro__info">
+                                <div class="article-intro__author"><img src="{% static 'assets/img/img-blog-author.png' %}" alt="blog-author"><a href="{% url 'blog_post' %}">Rebecca H. Clark</a></div>
+                                <div class="article-intro__date"><i class="icon_calendar"></i><span>31 Ocak 2021</span></div>
+                                <div class="article-intro__category"><i class="icon_ribbon_alt"></i><a href="{% url 'blog_post' %}">Makyaj</a></div>
+                            </div>
+                            <h3 class="article-intro__title">Mükemmel Makyaj için 15 İpucu</h3>
+                        </div>
+                        <div class="article-intro__body">
+                            <div class="article-intro__content">
+                                <p>Cilt bakımı rutini, makyaj teknikleri ve en iyi ürünlere dair ipuçlarını içeren kapsamlı makyaj rehberi. Profesyonel makyaj artistlerinden önerilerle kusursuz bir görünüm elde edin.</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-intro">
+                        <div class="article-intro__image shine"><a href="{% url 'blog_post' %}"><img src="{% static 'assets/img/img-article-intro-2.jpg' %}" alt="img-article"></a></div>
+                        <div class="article-intro__head">
+                            <div class="article-intro__info">
+                                <div class="article-intro__author"><img src="{% static 'assets/img/img-blog-author.png' %}" alt="blog-author"><a href="{% url 'blog_post' %}">Michael Johnson</a></div>
+                                <div class="article-intro__date"><i class="icon_calendar"></i><span>25 Şubat 2021</span></div>
+                                <div class="article-intro__category"><i class="icon_ribbon_alt"></i><a href="{% url 'blog_post' %}">Cilt Bakımı</a></div>
+                            </div>
+                            <h3 class="article-intro__title">Cilt Tipinize Göre Doğru Bakım Ürünleri</h3>
+                        </div>
+                        <div class="article-intro__body">
+                            <div class="article-intro__content">
+                                <p>Cilt tipinize uygun bakım ürünlerini seçmek, güzellik rutininizin başarısı için çok önemlidir. Kuru, yağlı, karma veya hassas ciltler için en iyi öneriler ve ipuçları.</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-intro">
+                        <div class="article-intro__image shine"><a href="{% url 'blog_post' %}"><img src="{% static 'assets/img/img-article-intro-3.jpg' %}" alt="img-article"></a></div>
+                        <div class="article-intro__head">
+                            <div class="article-intro__info">
+                                <div class="article-intro__author"><img src="{% static 'assets/img/img-blog-author.png' %}" alt="blog-author"><a href="{% url 'blog_post' %}">Sarah Anderson</a></div>
+                                <div class="article-intro__date"><i class="icon_calendar"></i><span>15 Mart 2021</span></div>
+                                <div class="article-intro__category"><i class="icon_ribbon_alt"></i><a href="{% url 'blog_post' %}">Saç Bakımı</a></div>
+                            </div>
+                            <h3 class="article-intro__title">Sağlıklı Saçlar İçin Doğal Yöntemler</h3>
+                        </div>
+                        <div class="article-intro__body">
+                            <div class="article-intro__content">
+                                <p>Evde hazırlayabileceğiniz doğal saç maskeleri, besleyici yağlar ve doğru saç bakım rutini ile parlak ve canlı saçlara kavuşun. Uzmanların önerdiği en etkili saç bakım ipuçları.</p>
+                            </div>
+                        </div>
+                    </article>
+                    <ul class="uk-pagination uk-flex-center uk-margin-large-top">
+                        <li class="uk-active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uk-width-1-3@m">
+                <aside class="sidebar">
+                    <div class="widjet widjet-search">
+                        <form class="uk-search uk-search-default" action="#!">
+                            {% csrf_token %}
+                            <button class="uk-search-icon-flip" data-uk-search-icon type="submit"></button>
+                            <input class="uk-input uk-search-input uk-form-large" type="search" placeholder="Anahtar Kelime">
+                        </form>
+                    </div>
+                    <div class="widjet widjet-category">
+                        <h4 class="widjet__title">Kategoriler</h4>
+                        <ul class="list-category">
+                            <li><a href="{% url 'shop' %}"><span>Cilt Bakımı</span><span>(45)</span></a></li>
+                            <li class="uk-active"><a href="{% url 'shop' %}"><span>Kaş Bakımı</span><span>(9)</span></a></li>
+                            <li><a href="{% url 'shop' %}"><span>Yüz Kozmetikleri</span><span>(128)</span></a></li>
+                            <li><a href="{% url 'shop' %}"><span>Saç Bakımı</span><span>(67)</span></a></li>
+                            <li><a href="{% url 'shop' %}"><span>Makyaj</span><span>(42)</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="widjet widjet-list-articles">
+                        <h4 class="widjet__title">Son Yazılar</h4>
+                        <ul class="list-articles">
+                            <li class="list-articles-item">
+                                <div class="list-articles-item__media"><a href="{% url 'blog_post' %}"><img src="{% static 'assets/img/img-article-thumb-1.jpg' %}" alt="article-thumb"></a></div>
+                                <div class="list-articles-item__body">
+                                    <div class="list-articles-item__date">28 Nisan, 2021</div>
+                                    <div class="list-articles-item__title"><a href="{% url 'blog_post' %}">Cilt Bakımında Vitamin C'nin Önemi</a></div>
+                                </div>
+                            </li>
+                            <li class="list-articles-item">
+                                <div class="list-articles-item__media"><a href="{% url 'blog_post' %}"><img src="{% static 'assets/img/img-article-thumb-2.jpg' %}" alt="article-thumb"></a></div>
+                                <div class="list-articles-item__body">
+                                    <div class="list-articles-item__date">15 Mart, 2021</div>
+                                    <div class="list-articles-item__title"><a href="{% url 'blog_post' %}">Güneş Koruyucular: Hangi SPF Size Uygun?</a></div>
+                                </div>
+                            </li>
+                            <li class="list-articles-item">
+                                <div class="list-articles-item__media"><a href="{% url 'blog_post' %}"><img src="{% static 'assets/img/img-article-thumb-3.jpg' %}" alt="article-thumb"></a></div>
+                                <div class="list-articles-item__body">
+                                    <div class="list-articles-item__date">3 Şubat, 2021</div>
+                                    <div class="list-articles-item__title"><a href="{% url 'blog_post' %}">Kış Aylarında Cilt Bakımı Nasıl Yapılmalı?</a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="widjet widjet-tags-cloud">
+                        <h4 class="widjet__title">Etiketler</h4>
+                        <ul class="tags-list">
+                            <li><a href="{% url 'blog_post' %}">Cilt Bakımı</a></li>
+                            <li><a href="{% url 'blog_post' %}">Makyaj</a></li>
+                            <li><a href="{% url 'blog_post' %}">Doğal</a></li>
+                            <li><a href="{% url 'blog_post' %}">Organik</a></li>
+                            <li><a href="{% url 'blog_post' %}">Anti-aging</a></li>
+                            <li><a href="{% url 'blog_post' %}">SPF</a></li>
+                            <li><a href="{% url 'blog_post' %}">Nemlendirici</a></li>
+                            <li><a href="{% url 'blog_post' %}">Saç Bakımı</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

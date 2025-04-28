@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}İletişim - Parfüm Kozmetik{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* İletişim sayfası özel stilleri */
+    .iframe-contact {
+        width: 100%;
+        height: 400px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .contacts-info {
+        padding: 20px;
+    }
+    
+    .contacts-info__item {
+        margin-bottom: 30px;
+    }
+    
+    .contacts-info__title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    
+    .contacts-info__content {
+        color: #666;
+        line-height: 1.6;
+    }
+    
+    .contacts-info__content a {
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+        transition: color 0.3s;
+    }
+    
+    .contacts-info__content a:hover {
+        color: #e91e63;
+        text-decoration: none;
+    }
+    
+    .uk-form-large {
+        border-radius: 4px;
+    }
+    
+    .uk-textarea {
+        min-height: 150px;
+        border-radius: 4px;
+    }
+    
+    .uk-button-danger {
+        background-color: #e91e63;
+    }
+    
+    .uk-button-danger:hover {
+        background-color: #d81b60;
+    }
+</style>
+{% endblock %}
+
+{% block body_class %}page-contacts{% endblock %}
+
+{% block content %}
+<div class="section-hero">
+    <div class="section-hero__bg"><img src="{% static 'assets/img/contacts-hero.jpg' %}" alt="contact-hero"></div>
+    <div class="section-hero__content" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
+        <h1 class="section-hero__title section-hero__top_padding">İletişim</h1>
+    </div>
+</div>
+<div class="page-content">
+    <div class="uk-section-large uk-container">
+        <div class="uk-grid uk-grid-large uk-child-width-1-2@m" data-uk-grid>
+            <div>
+                <iframe class="iframe-contact" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.1999309089805!2d28.97728761512023!3d41.0408767792981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab9e7a7777c43%3A0x4c76cf3dcc8b330b!2sGalata%20Kulesi!5e0!3m2!1str!2str!4v1651906111315!5m2!1str!2str" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div>
+                <div class="contacts-info" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
+                    <div class="contacts-info__item">
+                        <div class="contacts-info__title">Adresimiz</div>
+                        <div class="contacts-info__content">
+                            <p>İstanbul, Beyoğlu<br>Galata, 34421 - Türkiye</p>
+                        </div>
+                    </div>
+                    <div class="contacts-info__item">
+                        <div class="contacts-info__title">İletişim</div>
+                        <div class="contacts-info__content">
+                            <a href="tel:+902125551234">T: (+90) 212-555-1234</a>
+                            <a href="mailto:info@parfumekozmetik.com">E: info@parfumekozmetik.com</a>
+                        </div>
+                    </div>
+                    <div class="contacts-info__item">
+                        <div class="contacts-info__title">Çalışma Saatleri</div>
+                        <div class="contacts-info__content">
+                            <p>Pazartesi - Cuma: 09:00 — 18:00<br>
+                            Cumartesi: 10:00 — 17:00<br>
+                            Pazar: 11:00 — 16:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-margin-xlarge-bottom uk-container">
+        <div class="section-title" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
+            <span>En iyi kozmetik ve bakım ürünleri</span>
+            <h3>Bize Mesaj Gönderin</h3>
+        </div>
+        <div class="section-content">
+            <form action="#!">
+                {% csrf_token %}
+                <input type="hidden" name="project_name" value="Parfüm Kozmetik">
+                <input type="hidden" name="admin_email" value="info@parfumekozmetik.com">
+                <input type="hidden" name="form_subject" value="İletişim Formu">
+                <div class="uk-grid uk-child-width-1-3@s" data-uk-grid data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 200">
+                    <div><input class="uk-input uk-form-large" type="text" name="Name" placeholder="Adınız"></div>
+                    <div><input class="uk-input uk-form-large" type="text" name="Email" placeholder="Email"></div>
+                    <div><input class="uk-input uk-form-large" type="text" name="Phone" placeholder="Telefon"></div>
+                    <div class="uk-width-1-1"><input class="uk-input uk-form-large" type="text" name="Subject" placeholder="Konu"></div>
+                    <div class="uk-width-1-1"><textarea class="uk-textarea" name="Message" placeholder="Mesajınız"></textarea></div>
+                    <div class="uk-width-1-1 uk-text-center"><button class="uk-button uk-button-danger uk-button-large" type="submit">Mesaj Gönder</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sayfa yüklendiğinde yükleme ekranını gizle
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var preloader = document.getElementById('page-preloader');
+                if (preloader) {
+                    preloader.classList.add('loaded');
+                    setTimeout(function() {
+                        preloader.style.display = 'none';
+                    }, 300);
+                }
+            }, 100);
+        });
+    });
+</script>
+{% endblock %}

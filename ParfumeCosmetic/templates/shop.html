@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Kozmetik Mağaza - Ürünlerimiz{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Yükleme ekranı animasyonunu düzeltme */
+    #page-preloader {
+        position: fixed;
+        z-index: 100500;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        transition: 0.3s all;
+    }
+    
+    #page-preloader.loaded {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        margin-top: -25px;
+        margin-left: -25px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body_class %}page-shop{% endblock %}
+
+{% block content %}
+<div class="section-hero">
+    <div class="section-hero__bg"><img src="{% static 'assets/img/shop-hero.jpg' %}" alt="shop-hero"></div>
+    <div class="section-hero__content" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
+        <p class="section-hero__subtitle section-hero__top_padding">Viasun Ürünleri</p>
+        <h1 class="section-hero__title">Mağazamız</h1>
+    </div>
+</div>
+<div class="page-content">
+    <div class="uk-section-large uk-container">
+        <div data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-medium; delay: 500">
+            <div class="product-category-card">
+                <div class="product-category-card__media"> <img src="{% static 'assets/img/product-category-1.png' %}" alt="product-category"></div>
+                <div class="product-category-card__info">
+                    <div class="product-category-card__cat">Kremler</div>
+                    <div class="product-category-card__title">Anti-Aging Krem</div>
+                    <div class="product-category-card__intro">Cildinizin yaşlanma belirtileriyle savaşan özel formülüyle geliştirilmiş anti-aging kremimiz, gençlik ışıltısını geri kazandırmaya yardımcı olur. Düzenli kullanımla kırışıklıkların görünümünü azaltır.</div>
+                    <div class="product-category-card__more"><a class="uk-button uk-button-default uk-button-large" href="{% url 'product' %}">Detayları Gör</a></div>
+                </div>
+            </div>
+            <div class="product-category-card">
+                <div class="product-category-card__media"> <img src="{% static 'assets/img/product-category-2.png' %}" alt="product-category"></div>
+                <div class="product-category-card__info">
+                    <div class="product-category-card__cat">Saç Bakımı</div>
+                    <div class="product-category-card__title">Saç Şekillendirici Jel</div>
+                    <div class="product-category-card__intro">Saçlarınızı kolay şekillendirmenizi sağlayan ve gün boyu kalıcılık sunan jel, doğal içeriği sayesinde saçlarınızı beslerken aynı zamanda istediğiniz şekli uzun süre korur.</div>
+                    <div class="product-category-card__more"><a class="uk-button uk-button-default uk-button-large" href="{% url 'product' %}">Detayları Gör</a></div>
+                </div>
+            </div>
+            <div class="product-category-card">
+                <div class="product-category-card__media"> <img src="{% static 'assets/img/product-category-3.png' %}" alt="product-category"></div>
+                <div class="product-category-card__info">
+                    <div class="product-category-card__cat">Cilt Bakımı</div>
+                    <div class="product-category-card__title">Nemlendirici Losyon</div>
+                    <div class="product-category-card__intro">Hafif dokusu ve hızlı emilen formülü ile günlük kullanıma uygun nemlendirici losyonumuz, cildinizi kuruluğa karşı korur ve gün boyu nemli kalmasını sağlar.</div>
+                    <div class="product-category-card__more"><a class="uk-button uk-button-default uk-button-large" href="{% url 'product' %}">Detayları Gör</a></div>
+                </div>
+            </div>
+            <div class="product-category-card">
+                <div class="product-category-card__media"> <img src="{% static 'assets/img/product-category-4.png' %}" alt="product-category"></div>
+                <div class="product-category-card__info">
+                    <div class="product-category-card__cat">Sağlıklı Banyo</div>
+                    <div class="product-category-card__title">V-Bath Banyo Tuzu</div>
+                    <div class="product-category-card__intro">Doğal mineraller ve esansiyel yağlarla zenginleştirilmiş banyo tuzumuz, yorgunluğu giderir, kasları rahatlatır ve cildinizi yumuşatırken rahatlatıcı bir banyo deneyimi yaşamanızı sağlar.</div>
+                    <div class="product-category-card__more"><a class="uk-button uk-button-default uk-button-large" href="{% url 'product' %}">Detayları Gör</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-newsletter">
+    <div class="uk-grid uk-grid-collapse uk-child-width-1-2@l" data-uk-grid>
+        <div>
+            <div class="section-newsletter__form" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 300">
+                <div class="section-newsletter__title"><span>En iyi kozmetik ve bakım ürünleri</span>
+                    <h3>Viasun Bültenine Abone Olun<br> & Güncel Kalın</h3>
+                </div>
+                <form action="#!">
+                    {% csrf_token %}
+                    <input type="hidden" name="project_name" value="Viasun">
+                    <input type="hidden" name="admin_email" value="info@parfumecosmetic.com">
+                    <input type="hidden" name="form_subject" value="Newsletter">
+                    <input type="text" placeholder="emailadresiniz@ornek.com"><input class="uk-button uk-button-danger" type="submit" value="Abone Ol">
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="section-newsletter__img"> <img src="{% static 'assets/img/img-newsletter.jpg' %}" alt="img-newsletter"></div>
+        </div>
+    </div>
+</div>
+<div class="section-quote">
+    <div class="uk-container">
+        <div class="section-quote__title" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
+            <h3>Güzellik, kendin olmaya<br> karar verdiğin anda başlar.</h3><span>viasun düşüncesi</span>
+        </div>
+        <div class="section-quote__content" data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-medium; delay: 500"> 
+            <img class="section-quote__img section-quote__img--1" src="{% static 'assets/img/img-quote-1.jpg' %}" alt="img-quote">
+            <img class="section-quote__img section-quote__img--2" src="{% static 'assets/img/img-quote-2.jpg' %}" alt="img-quote">
+            <img class="section-quote__img section-quote__img--3" src="{% static 'assets/img/img-quote-3.jpg' %}" alt="img-quote">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Sayfa yüklendiğinde yükleme ekranını gizle
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sayfanın tam olarak yüklenmesini bekle
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var preloader = document.getElementById('page-preloader');
+                if (preloader) {
+                    preloader.classList.add('loaded');
+                    setTimeout(function() {
+                        preloader.style.display = 'none';
+                    }, 300);
+                }
+            }, 100);
+        });
+    });
+</script>
+{% endblock %}
