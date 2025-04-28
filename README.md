@@ -15,10 +15,8 @@ Parfüm Kozmetik, kozmetik ürünleri satmak için tasarlanmış bir Django taba
 - İletişim formu
 
 ## Ekran Görüntüleri
+ <img width="1710" alt="Ekran Resmi 2025-04-28 12 23 36" src="https://github.com/user-attachments/assets/f5b92035-0451-47df-8a90-61efbb91951a" /> 
 
-![Ana Sayfa](/media/screenshots/home.png)
-![Ürün Sayfası](/media/screenshots/product.png)
-![Sepet](/media/screenshots/cart.png)
 
 ## Teknolojiler
 
