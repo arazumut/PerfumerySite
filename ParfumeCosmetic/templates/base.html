@@ -54,7 +54,7 @@
                     <div class="uk-grid uk-child-width-1-4@m uk-child-width-1-2@s" data-uk-grid>
                         <div>
                             <div class="page-footer__section">
-                                <div class="page-footer__logo"><img src="{% static 'assets/img/logo.png' %}" alt="Viasun"></div>
+                                <div class="page-footer__logo"><img src="{% static 'assets/img/logo.png' %}" alt="Parfüm Kozmetik"></div>
                                 <p class="uk-margin-medium-top">Viasun, en kaliteli kozmetik ve bakım ürünlerini müşterilerimizle buluşturmak için 2005 yılından beri hizmet vermektedir.</p>
                                 <ul class="social">
                                     <li><a href="http://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
@@ -124,30 +124,10 @@
             </div>
             <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
                 <li><a href="{% url 'home' %}">Anasayfa</a></li>
-                <li class="uk-parent"><a href="{% url 'shop' %}">Mağaza</a>
-                    <ul class="uk-nav-sub">
-                        <li><a href="{% url 'shop' %}">Kreatif Mağaza Stili</a></li>
-                        <li><a href="{% url 'shop_default' %}">Kenar Çubuğu Stili</a></li>
-                        <li><a href="{% url 'shop_grid' %}">Geniş Stil</a></li>
-                        <li><a href="{% url 'product_default' %}">Varsayılan Ürün Sayfası</a></li>
-                        <li><a href="{% url 'product' %}">Kreatif Ürün Sayfası</a></li>
-                    </ul>
-                </li>
+                <li class="uk-parent"><a href="{% url 'shop' %}">Mağaza</a></li>
                 <li><a href="{% url 'about' %}">Hakkımızda</a></li>
-                <li class="uk-parent"><a href="#">Sayfalar</a>
-                    <ul class="uk-nav-sub">
-                        <li><a href="{% url 'login' %}">Giriş Sayfası</a></li>
-                        <li><a href="{% url 'reset_password' %}">Şifre Sıfırlama</a></li>
-                        <li><a href="{% url 'typography' %}">Tipografi Sayfası</a></li>
-                    </ul>
-                </li>
-                <li class="uk-parent"><a href="{% url 'blog' %}">Blog</a>
-                    <ul class="uk-nav-sub">
-                        <li><a href="{% url 'blog' %}">Blog Ana</a></li>
-                        <li><a href="{% url 'blog_post' %}">Blog Yazısı 1</a></li>
-                        <li><a href="{% url 'blog_post_new' %}">Blog Yazısı 2</a></li>
-                    </ul>
-                </li>
+                <li class="uk-parent"><a href="#">Sayfalar</a></li>
+                <li class="uk-parent"><a href="{% url 'blog' %}">Blog</a></li>
                 <li><a href="{% url 'contact' %}">İletişim</a></li>
             </ul>
             <div class="uk-margin-large-top">
