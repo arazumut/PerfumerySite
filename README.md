@@ -1,50 +1,50 @@
-# Parfüm Kozmetik Web Sitesi
+# Perfume Cosmetic Website
 
-Parfüm Kozmetik, kozmetik ürünleri satmak için tasarlanmış bir Django tabanlı e-ticaret web sitesidir. Kullanıcı dostu arayüzü ve modern tasarımı ile kozmetik ürünlerinin çevrimiçi satışı için ideal bir platformdur.
+Perfume Cosmetic is a Django-based e-commerce website designed to sell cosmetic products. With its user-friendly interface and modern design, it is an ideal platform for online sales of cosmetic products.
 
-## Özellikler
+## Features
 
-- Responsive tasarım ile tüm cihazlarda düzgün görüntüleme
-- Ürün kategorileri ve alt kategorileri
-- Detaylı ürün sayfaları
-- İstek listesi ve sepet özellikleri
-- Kullanıcı hesap yönetimi
-- Ödeme entegrasyonu
-- Admin paneli ile kolay içerik yönetimi
-- Blog sistemi
-- İletişim formu
+- Responsive design for proper display on all devices
+- Product categories and subcategories
+- Detailed product pages
+- Wishlist and cart features
+- User account management
+- Payment integration
+- Easy content management with admin panel
+- Blog system
+- Contact form
 
-## Ekran Görüntüleri
- <img width="1710" alt="Ekran Resmi 2025-04-28 12 23 36" src="https://github.com/user-attachments/assets/f5b92035-0451-47df-8a90-61efbb91951a" /> 
+## Screenshots
+ <img width="1710" alt="Screen Shot 2025-04-28 12 23 36" src="https://github.com/user-attachments/assets/f5b92035-0451-47df-8a90-61efbb91951a" /> 
 
 
-## Teknolojiler
+## Technologies
 
 - **Backend**: Django 4.2+
 - **Frontend**: HTML5, CSS3, JavaScript, UIKit
-- **Veritabanı**: SQLite (Geliştirme), PostgreSQL (Üretim için önerilen)
-- **CSS Frameworkleri**: UIKit
-- **Icon Kütüphanesi**: Font Awesome 5
-- **Diğer**: jQuery, Swiper.js
+- **Database**: SQLite (Development), PostgreSQL (Recommended for Production)
+- **CSS Frameworks**: UIKit
+- **Icon Library**: Font Awesome 5
+- **Others**: jQuery, Swiper.js
 
-## Kurulum
+## Installation
 
-### Ön Koşullar
+### Prerequisites
 
 - Python 3.8+
 - pip
-- virtualenv (önerilen)
+- virtualenv (recommended)
 - Git
 
-### Adımlar
+### Steps
 
-1. Projeyi klonlayın:
+1. Clone the project:
 ```bash
 git clone https://github.com/username/CosmeticWebSite.git
 cd CosmeticWebSite/Cosmetic
 ```
 
-2. Sanal ortam oluşturun ve etkinleştirin:
+2. Create and activate a virtual environment:
 ```bash
 # Linux/macOS
 python -m venv venv
@@ -55,90 +55,90 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-3. Gerekli paketleri yükleyin:
+3. Install required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Veritabanını oluşturun ve migrate edin:
+4. Create and migrate the database:
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-5. Admin kullanıcısı oluşturun:
+5. Create an admin user:
 ```bash
 python manage.py createsuperuser
 ```
 
-6. Statik dosyaları toplayın:
+6. Collect static files:
 ```bash
 python manage.py collectstatic
 ```
 
-7. Sunucuyu başlatın:
+7. Start the server:
 ```bash
 python manage.py runserver
 ```
 
-8. Tarayıcınızda aşağıdaki URL'yi ziyaret edin:
+8. Visit the following URL in your browser:
 ```
 http://127.0.0.1:8000/
 ```
 
-## Kullanım
+## Usage
 
-### Admin Paneli
+### Admin Panel
 
-Admin paneline erişmek için `http://127.0.0.1:8000/admin/` adresini ziyaret edin ve superuser kimlik bilgilerinizle giriş yapın. Bu panel aracılığıyla şunları yapabilirsiniz:
+To access the admin panel, visit `http://127.0.0.1:8000/admin/` and log in with your superuser credentials. Through this panel, you can:
 
-- Kategoriler ve ürünler ekleyebilir/düzenleyebilir/silebilirsiniz
-- Blog yazıları yönetebilirsiniz
-- Kullanıcıları ve siparişleri görüntüleyebilirsiniz
-- Site ayarlarını değiştirebilirsiniz
+- Add/edit/delete categories and products
+- Manage blog posts
+- View users and orders
+- Change site settings
 
-### Ürün Yönetimi
+### Product Management
 
-1. Admin panelinde "ParfumeCosmetic" bölümüne gidin
-2. "Kategoriler" veya "Ürünler" üzerine tıklayın
-3. "Ekle" butonunu kullanarak yeni öğeler ekleyin
-4. Mevcut öğeleri düzenlemek için üzerlerine tıklayın
+1. Go to the "ParfumeCosmetic" section in the admin panel
+2. Click on "Categories" or "Products"
+3. Use the "Add" button to add new items
+4. Click on existing items to edit them
 
-## Üretim Ortamına Dağıtım
+## Deployment to Production
 
-Projeyi üretim ortamında çalıştırmak için şu adımları izleyin:
+Follow these steps to run the project in a production environment:
 
-1. `settings.py` içindeki `DEBUG` ayarını `False` olarak değiştirin
-2. `SECRET_KEY` için güvenli bir değer ayarlayın (ortam değişkenleri kullanın)
-3. `ALLOWED_HOSTS` ayarını güncelleyin
-4. PostgreSQL veya MySQL gibi daha güçlü bir veritabanına geçmeyi düşünün
-5. Statik dosyaları sunmak için Nginx veya Apache kullanın
-6. HTTPS için SSL sertifikası kurun
+1. Change the `DEBUG` setting to `False` in `settings.py`
+2. Set a secure value for `SECRET_KEY` (use environment variables)
+3. Update the `ALLOWED_HOSTS` setting
+4. Consider switching to a more powerful database like PostgreSQL or MySQL
+5. Use Nginx or Apache to serve static files
+6. Install an SSL certificate for HTTPS
 
-## Yapı
+## Structure
 
-Proje yapısı:
+Project structure:
 
-- `ParfumeCosmetic/`: Ana uygulama dizini
-  - `models.py`: Veritabanı modelleri
-  - `views.py`: Görünüm fonksiyonları
-  - `urls.py`: URL yönlendiricileri
-  - `admin.py`: Admin panel kayıtları
-  - `templates/`: HTML şablonları
-  - `static/`: Statik dosyalar (CSS, JS, resimler)
-- `myproject/`: Proje yapılandırma dizini
-  - `settings.py`: Proje ayarları
-  - `urls.py`: Ana URL yönlendiricileri
-- `media/`: Kullanıcı tarafından yüklenen dosyalar
-- `static/`: Toplanmış statik dosyalar
-- `manage.py`: Django yönetim betiği
-- `requirements.txt`: Gerekli Python paketleri
+- `ParfumeCosmetic/`: Main application directory
+  - `models.py`: Database models
+  - `views.py`: View functions
+  - `urls.py`: URL routers
+  - `admin.py`: Admin panel registrations
+  - `templates/`: HTML templates
+  - `static/`: Static files (CSS, JS, images)
+- `myproject/`: Project configuration directory
+  - `settings.py`: Project settings
+  - `urls.py`: Main URL routers
+- `media/`: User-uploaded files
+- `static/`: Collected static files
+- `manage.py`: Django management script
+- `requirements.txt`: Required Python packages
 
-## Katkıda Bulunma
+## Contributing
 
-1. Bu depoyu fork edin
-2. Feature branch'i oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add some amazing feature'`)
-4. Branch'inize push edin (`git push origin feature/amazing-feature`)
-5. Bir Pull Request açın
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to your branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
